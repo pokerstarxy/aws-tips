@@ -41,10 +41,14 @@
 
 ### 创建迁移任务
    
-   这里我仅仅开启了cloudwatch 未开启验证 开启cloudwatch需要创建一个role [文档](https://aws.amazon.com/cn/premiumsupport/knowledge-center/dms-cloudwatch-logs-not-appearing/)   
-   开启表验证 对资源要求较高 经常造成数据库连接断开 所以先同步过来再进行验证 通过高级任务设置限制并发数以及控制同步的表
+   开启cloudwatch和验证 开启cloudwatch需要创建一个role [文档](https://aws.amazon.com/cn/premiumsupport/knowledge-center/dms-cloudwatch-logs-not-appearing/)   
+   通过高级任务设置限制并发数以及控制同步的表
+   一个复制实例可以承担多个复制任务
    
 ### 数据验证
+   验证失败的问题 可以在awsdms_validation_failures_v1表里面查看问题
+   ![validate_problem](../static/aws-validate.jpg)
+   这里验证任务处理时间戳(timestamp类型)的时区不一致 所以不匹配 但是数据是一致的 
 
 
 
